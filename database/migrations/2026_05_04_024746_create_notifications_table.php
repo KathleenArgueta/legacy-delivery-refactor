@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            // SMELL: polimorfismo manual (no morphs de Laravel)
             $table->unsignedBigInteger('recipient_id');
             $table->string('recipient_type'); // 'customer','vendor','courier'
             $table->string('channel'); // 'email','sms','push','whatsapp'
             $table->string('subject');
             $table->text('content');
-            // SMELL: flags combinatorios para Decorator (en lugar de decoradores apilables)
             $table->boolean('is_encrypted')->default(false);
             $table->boolean('is_logged')->default(false);
             $table->boolean('is_signed')->default(false);

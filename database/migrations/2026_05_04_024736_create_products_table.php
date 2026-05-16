@@ -17,10 +17,8 @@ return new class extends Migration
             $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
             $table->string('name');
             $table->text('description')->nullable();
-            // SMELL: precio como float, no decimal ni integer-centavos. Errores de redondeo posibles.
             $table->float('price');
             $table->string('image')->nullable();
-            // SMELL: available y stock pueden desincronizarse. No hay constraint que los mantenga consistentes.
             $table->boolean('available')->default(true);
             $table->integer('stock')->default(0);
             $table->integer('preparation_time_minutes')->default(15);

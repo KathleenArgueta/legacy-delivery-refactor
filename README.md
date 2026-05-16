@@ -14,7 +14,6 @@ El código funciona. Está mal diseñado. Esa es la premisa.
 - [Tests](#tests)
 - [Cómo trabajar en este repo](#cómo-trabajar-en-este-repo)
 - [Estructura del proyecto](#estructura-del-proyecto)
-- [Módulos y patrones asociados](#módulos-y-patrones-asociados)
 - [Tags de Git](#tags-de-git)
 
 ---
@@ -54,7 +53,7 @@ Los tests deben pasar en verde antes y después de cada refactor. Son tu red de 
 
 Lee `STUDENT_GUIDE.md`. El flujo es:
 
-1. Crear un branch por cada mini-entrega (`me1-solid-refactor`, `me2-strategy`, ...)
+1. Crear un branch por cada mini-entrega (`me1`, `me2`, ...)
 2. Refactorizar aplicando el patrón asignado
 3. Verificar que los tests siguen en verde
 4. Escribir la bitácora en `/bitacoras/`
@@ -68,8 +67,8 @@ app/
   Http/Controllers/— Controllers API y Web
   Services/        — Servicios externos (pagos, email, SMS, push)
   Reports/         — Generadores de reportes (PDF, CSV, Excel)
-  Support/         — Logger (Singleton)
-  BadPatterns/     — Galería de anti-patrones para S11 (no tocar)
+  Support/         — Logger
+  BadPatterns/     — Galería de anti-patrones (no tocar)
 resources/views/   — Vistas Blade
 tests/
   Unit/            — Tests unitarios de modelos
@@ -77,27 +76,13 @@ tests/
 bitacoras/         — Tus bitácoras de decisiones (una por mini-entrega)
 ```
 
-## Módulos y patrones asociados
-
-| Módulo | Archivo principal | Patrón objetivo |
-|--------|-------------------|-----------------|
-| Descuentos | `app/Models/Discount.php` | Strategy |
-| Reportes | `app/Reports/` | Template Method |
-| Estados de orden | `app/Models/Order.php` — `transitionTo()` | State |
-| Notificaciones | `app/Models/Order.php` — `notify()` | Factory Method → Decorator |
-| Logger | `app/Support/Logger.php` | Singleton → DI |
-| Pasarelas de pago | `app/Services/Payments/` | Adapter |
-| Checkout | `app/Models/Customer.php` — `placeOrder()` | Facade |
-| Combos anidados | `app/Models/ProductBundle.php` | Composite |
-| Validación de orden | `app/Models/Order.php` — `validateOrder()` | Chain of Responsibility |
-
 ## Tags de Git
 
 | Tag | Estado |
 |-----|--------|
 | `v0` | Punto de partida — el legacy tal como fue entregado |
-| `v1` | Referencia tras Mini-entrega 1 (SOLID) |
-| `v2` | Referencia tras Mini-entrega 2 (Strategy + Template Method) |
-| `v3` | Referencia tras Mini-entrega 3 (Factory + Singleton + Observer) |
-| `v4` | Referencia tras Mini-entrega 4 (Adapter + Facade) |
-| `v5` | Referencia tras Mini-entrega 5 (Decorator + Composite + CoR) |
+| `v1` | Referencia tras Mini-entrega 1 |
+| `v2` | Referencia tras Mini-entrega 2 |
+| `v3` | Referencia tras Mini-entrega 3 |
+| `v4` | Referencia tras Mini-entrega 4 |
+| `v5` | Referencia tras Mini-entrega 5 |

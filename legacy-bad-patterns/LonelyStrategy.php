@@ -2,7 +2,6 @@
 
 // Anti-pattern: Strategy con una sola implementación concreta.
 // El patrón no añade valor aquí. El contexto nunca cambia de estrategia.
-// En S6 se discute cuándo Strategy agrega valor vs cuándo es over-engineering.
 
 interface DiscountStrategy
 {

@@ -10,9 +10,9 @@ namespace App\BadPatterns;
  * y el orden de aplicación se vuelve crítico y frágil.
  *
  * Contexto en el legacy: el módulo de notificaciones tiene flags (is_encrypted,
- * is_signed, is_logged) que en S8 L se refactorizan con Decorator.
- * Este archivo muestra qué pasa cuando se abusa de ese refactor:
- * se termina construyendo una cadena de 6 decoradores para enviar un email.
+ * is_signed, is_logged) que controlan el comportamiento de forma combinatoria.
+ * Este archivo muestra qué pasa cuando se abusa de la composición en capas:
+ * se termina construyendo una cadena de 6 envoltorios para enviar un email.
  *
  * Señal de alerta: cuando necesitas un comentario para explicar
  * en qué orden se apilan los decoradores, hay demasiados.

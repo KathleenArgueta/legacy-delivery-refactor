@@ -2,7 +2,6 @@
 
 // Anti-pattern: Decorator apilado 6 veces sin razón de negocio.
 // Muestra cuándo el Decorator se vuelve sobre-ingeniería.
-// En S5 L se discute cuándo usar vs no usar Decorator.
 
 interface NotificationInterface
 {

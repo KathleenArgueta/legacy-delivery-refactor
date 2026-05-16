@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('address');
             $table->string('city');
-            // SMELL: address y coordenadas duplicadas (customer tiene su dirección, y también lat/lng)
             $table->decimal('latitude', 10, 7)->nullable();
             $table->decimal('longitude', 10, 7)->nullable();
             $table->boolean('verified')->default(false);

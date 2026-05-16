@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('vendor_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->text('description')->nullable();
-            // SMELL: base_price como float (misma familia de smell que Product.price)
             $table->float('base_price');
             $table->float('discount_percentage')->default(0);
             $table->string('image')->nullable();

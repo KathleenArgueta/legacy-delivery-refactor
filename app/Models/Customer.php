@@ -201,7 +201,7 @@ class Customer extends Model
             $order->status = 'paid';
             $order->save();
 
-            // --- Notificaciones (Observer violation: hardcoded) ---
+            // --- Notificaciones (servicios instanciados directamente, hardcoded) ---
             $emailService = new \App\Services\EmailService();
             $smsService   = new \App\Services\SMSService();
 

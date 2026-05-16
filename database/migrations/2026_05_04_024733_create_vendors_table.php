@@ -21,10 +21,8 @@ return new class extends Migration
             $table->string('city');
             $table->decimal('latitude', 10, 7)->nullable();
             $table->decimal('longitude', 10, 7)->nullable();
-            // SMELL: JSON sin validar estructura. Formato esperado: {"monday":{"open":"08:00","close":"22:00","closed":false},...}
             $table->json('opening_hours')->nullable();
             $table->decimal('commission_rate', 5, 2)->default(15.00);
-            // SMELL: status como string, no enum. Sin scope 'active'.
             $table->string('status')->default('active'); // 'active','inactive','suspended'
             $table->timestamps();
         });

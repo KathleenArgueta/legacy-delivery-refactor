@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name'); // 'Wompi','N1co','BAC Transfer','Visa Direct'
             $table->string('api_endpoint');
-            // SMELL: api_key "cifrada" pero encrypt() mal usado (solo base64 en realidad)
             $table->string('api_key');
             $table->boolean('enabled')->default(true);
             $table->unsignedInteger('priority')->default(0);

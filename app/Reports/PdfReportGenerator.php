@@ -2,7 +2,6 @@
 namespace App\Reports;
 
 // Solo el paso 'format' varía. Los otros 4 pasos son idénticos.
-// Target de Template Method en S4 L.
 class PdfReportGenerator
 {
     public function generate(array $params): string

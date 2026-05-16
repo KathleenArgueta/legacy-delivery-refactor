@@ -18,7 +18,6 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone')->nullable();
-            // SMELL: role como string, no PHP enum. Sin cast. Checks regados por el sistema.
             $table->string('role')->default('customer'); // 'customer','vendor','courier','admin'
             $table->rememberToken();
             $table->timestamps();

@@ -41,11 +41,11 @@ Cada semana sigue este ciclo:
 ### Crear un branch para cada mini-entrega
 
 ```bash
-git checkout -b me1-solid-refactor      # Mini-entrega 1
-git checkout -b me2-strategy            # Mini-entrega 2
-git checkout -b me3-factory-observer    # Mini-entrega 3
-git checkout -b me4-adapter-facade      # Mini-entrega 4
-git checkout -b me5-decorator-composite # Mini-entrega 5
+git checkout -b me1      # Mini-entrega 1
+git checkout -b me2      # Mini-entrega 2
+git checkout -b me3      # Mini-entrega 3
+git checkout -b me4      # Mini-entrega 4
+git checkout -b me5      # Mini-entrega 5
 ```
 
 ---
@@ -71,11 +71,11 @@ El repositorio usa tags para marcar el estado del sistema en cada etapa del cicl
 | Tag | Estado |
 |---|---|
 | `v0` | Punto de partida — el legacy tal como fue entregado |
-| `v1` | Referencia tras Mini-entrega 1 (SOLID) |
-| `v2` | Referencia tras Mini-entrega 2 (Strategy + Template Method) |
-| `v3` | Referencia tras Mini-entrega 3 (Factory + Singleton + Observer) |
-| `v4` | Referencia tras Mini-entrega 4 (Adapter + Facade) |
-| `v5` | Referencia tras Mini-entrega 5 (Decorator + Composite + CoR) |
+| `v1` | Referencia tras Mini-entrega 1 |
+| `v2` | Referencia tras Mini-entrega 2 |
+| `v3` | Referencia tras Mini-entrega 3 |
+| `v4` | Referencia tras Mini-entrega 4 |
+| `v5` | Referencia tras Mini-entrega 5 |
 
 Para ver el estado original en cualquier momento:
 

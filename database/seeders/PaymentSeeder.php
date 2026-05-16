@@ -41,7 +41,6 @@ class PaymentSeeder extends Seeder
                     ? ['type' => 'cash']
                     : ['provider' => $provider->name, 'status' => 'approved'],
                 'processed_at'            => now()->subMinutes(rand(5, 1440)),
-                // SMELL: PaymentInCash no distingue en la tabla, solo en el objeto PHP
                 // Para demostrar la LSP violation, al menos 1 orden delivered tiene un payment
                 // que en tiempo de ejecución se comporta como PaymentInCash
             ]);

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('vendor_id')->constrained()->cascadeOnDelete();
             $table->string('name');
-            // SMELL: slug no único globalmente (solo unique por vendor, pero queries buscan por slug global)
             $table->string('slug');
             $table->unsignedBigInteger('parent_category_id')->nullable();
             $table->foreign('parent_category_id')->references('id')->on('categories')->nullOnDelete();

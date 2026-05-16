@@ -2,7 +2,6 @@
 
 // Anti-pattern: Facade con 15+ métodos que contienen toda la lógica del sistema.
 // No delega a subsistemas especializados - implementa directamente.
-// En S9 se enseña el Facade real como simplificador, no como god class.
 class KitchenSinkFacade
 {
     // SMELL: implementa directamente en lugar de delegar

@@ -91,7 +91,7 @@ app/
     Payments/       — Handlers de pasarelas (Wompi, N1co, BAC)
   Reports/          — Generadores PDF, CSV, Excel
   Support/          — Logger
-  BadPatterns/      — Galería de anti-patrones (solo para S11 M, no tocar)
+  BadPatterns/      — Galería de anti-patrones (no tocar)
 database/
   migrations/       — Estructura de tablas
   seeders/          — Datos de prueba

@@ -2,7 +2,6 @@
 
 // Anti-pattern: Observer pattern con un único observer hardcoded dentro del Subject.
 // No añade nada vs. una llamada directa.
-// En S8 se muestra el Observer real con múltiples observadores dinámicos.
 
 interface Observer
 {

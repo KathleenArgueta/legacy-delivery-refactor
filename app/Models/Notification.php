@@ -20,7 +20,7 @@ class Notification extends Model
         'sent_at'      => 'datetime',
     ];
 
-    // En lugar de Decorator apilable, usa flags en BD y condicionales.
+    // El comportamiento se controla con flags en BD y condicionales encadenados.
     public function prepareContent(): string
     {
         $content = $this->content;

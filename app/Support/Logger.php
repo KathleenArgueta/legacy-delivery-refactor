@@ -4,7 +4,6 @@ namespace App\Support;
 
 use Illuminate\Support\Facades\Log;
 
-// Refactor target en S5 M: eliminar getInstance(), inyectar por constructor, registrar en Container.
 class Logger
 {
     private static ?self $instance = null;

@@ -15,14 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
             $table->foreignId('provider_id')->constrained('payment_providers');
-            // SMELL: amount como float (debería ser decimal o integer en centavos)
             $table->float('amount');
             $table->string('currency')->default('USD');
-            // SMELL: status como string
             $table->string('status')->default('pending');
             // 'pending','processing','completed','failed','refunded'
             $table->string('external_transaction_id')->nullable();
-            // SMELL: raw_response como JSON sin tipar
             $table->json('raw_response')->nullable();
             $table->timestamp('processed_at')->nullable();
             $table->timestamps();
