@@ -3,28 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class OrderItem extends Model
 {
     protected $fillable = ['order_id', 'item_type', 'item_id', 'quantity', 'unit_price', 'subtotal'];
 
     public function order() { return $this->belongsTo(Order::class); }
-
-    public function getItem()
+    public function purchasable_item(): MorphTo
     {
-        if ($this->item_type === 'product') {
-            return Product::find($this->item_id);
-        } elseif ($this->item_type === 'bundle') {
-            return ProductBundle::find($this->item_id);
-        }
-        return null;
+        return $this->morphTo('purchasable_item', 'item_type', 'item_id');
     }
 
     public function getUnitPriceAttribute($value)
     {
-        // Inconsistente: si unit_price es 0 (bug de seed), recalcula desde el item
         if ($value == 0) {
-            $item = $this->getItem();
+            $item = $this->purchasable_item;
             if ($item instanceof Product) {
                 return $item->price;
             } elseif ($item instanceof ProductBundle) {

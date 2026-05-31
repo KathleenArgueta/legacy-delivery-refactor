@@ -55,29 +55,18 @@ class Notification extends Model
         $content = $this->prepareContent();
 
         try {
-            if ($this->channel === 'email') {
-                $service = new \App\Services\EmailService();
-                $service->send($this->getRecipientEmail(), $this->subject, $content);
-            } elseif ($this->channel === 'sms') {
-                $service = new \App\Services\SMSService();
-                $service->send($this->getRecipientPhone(), $content);
-            } elseif ($this->channel === 'push') {
-                $service = new \App\Services\PushService();
-                $service->send($this->recipient_id, $this->subject, $content);
-            } elseif ($this->channel === 'whatsapp') {
-                $service = new \App\Services\WhatsAppService();
-                $service->send($this->getRecipientPhone(), $content);
-            }
+            $service = app(NotificationChannelInterface::class, ['channel' => $this->channel]);
+            $service->send($this, $content);
 
             $this->sent    = true;
             $this->sent_at = now();
             $this->save();
             return true;
-
         } catch (\Exception $e) {
             $this->save();
             return false;
         }
+    }
     }
 
     private function getRecipientEmail(): string
@@ -121,4 +110,3 @@ class Notification extends Model
             substr($content, 0, 60)
         );
     }
-}

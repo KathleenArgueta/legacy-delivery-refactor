@@ -15,37 +15,27 @@ class CourierController extends Controller
     }
 
     public function updateLocation(Request $request, Courier $courier): JsonResponse
-    {
-        $user = $request->user();
-        if ($user->role !== 'courier' || $courier->user_id !== $user->id) {
-            if ($user->role !== 'admin') {
-                return response()->json(['error' => 'Unauthorized'], 403);
-            }
-        }
+{
+    $this->authorize('update', $courier);
 
-        $request->validate([
-            'latitude'  => 'required|numeric',
-            'longitude' => 'required|numeric',
-        ]);
+    $request->validate([
+        'latitude'  => 'required|numeric',
+        'longitude' => 'required|numeric',
+    ]);
 
-        $courier->updateLocation($request->latitude, $request->longitude);
+    $courier->updateLocation($request->latitude, $request->longitude);
 
-        return response()->json(['message' => 'Location updated.']);
-    }
+    return response()->json(['message' => 'Location updated.']);
+}
 
-    public function updateAvailability(Request $request, Courier $courier): JsonResponse
-    {
-        $user = $request->user();
-        if ($user->role !== 'courier' || $courier->user_id !== $user->id) {
-            if ($user->role !== 'admin') {
-                return response()->json(['error' => 'Unauthorized'], 403);
-            }
-        }
+public function updateAvailability(Request $request, Courier $courier): JsonResponse
+{
+    $this->authorize('update', $courier);
 
-        $request->validate(['available' => 'required|boolean']);
-        $courier->available = $request->available;
-        $courier->save();
+    $request->validate(['available' => 'required|boolean']);
+    $courier->available = $request->available;
+    $courier->save();
 
-        return response()->json(['message' => 'Availability updated.']);
-    }
+    return response()->json(['message' => 'Availability updated.']);
+}
 }
