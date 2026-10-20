@@ -1,4 +1,30 @@
-# Legacy Delivery System
+# Legacy Delivery: refactoring with design patterns
+
+Refactoring of a working but poorly designed Laravel delivery marketplace. I identified design problems, applied the right pattern while keeping the test suite green, and documented every decision in a log: the problem I saw, the pattern I applied, the one I ruled out, and the trade-off I accepted.
+
+| | |
+|---|---|
+| **Author** | Kathleen Argueta |
+| **Course** | DA0921 Software Design Patterns, ESEN (2026) |
+| **Stack** | PHP 8.4 · Laravel · PHPUnit · Docker |
+| **Portfolio** | [kathleenargueta.github.io](https://kathleenargueta.github.io) |
+
+## What I did
+
+| Assignment | Problem in the legacy code | Decision |
+|---|---|---|
+| Short assignment 1 | Code smells across the domain | Inventory of smells in a table |
+| Milestone 1 (SOLID) | SOLID violations in `Customer`, `Notification`, `OrderItem` and `CourierController` | SRP, OCP, ISP and DIP: `NotifiableInterface`, `CourierPolicy` for authorization, and injection in `AppServiceProvider` |
+| Milestone 2 (Strategy) | `Discount::apply` with a `switch` that grows with every new promotion | One class per discount type (`app/Discounts/`) behind `DiscountInterface` |
+| Milestone 2 (Template Method) | `Customer::placeOrder` split by an `if` between cash and Wompi payments | Abstract `OrderProcessor` with `CashOrderProcessor` and `WompiOrderProcessor` (`app/Processors/`) |
+
+Decision logs (in Spanish): [Milestone 2](bitacoras/me2-bitacora.md) · [Milestone 1](https://github.com/KathleenArgueta/legacy-delivery-refactor/tree/81d356152f1d1aaa0920138294faa9b63dc96352/bitacoras)
+
+> Shared with the instructor's permission.
+
+---
+
+## About the base project (original course README, in Spanish)
 
 Marketplace de delivery multi-vendor construido en PHP 8.3 / Laravel 13.
 Usado como caso de estudio en **DA0921 Patrones de Diseño de Software — ESEN, ciclo 2026-2**.
