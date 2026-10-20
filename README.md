@@ -1,32 +1,30 @@
-# Legacy Delivery: refactor con patrones de diseño
+# Legacy Delivery: refactoring with design patterns
 
-**ES** · Refactor de un marketplace de delivery en Laravel que funciona pero está mal diseñado. Mi trabajo fue detectar los problemas de diseño, aplicar el patrón adecuado sin romper los tests y documentar cada decisión en una bitácora: qué problema vi, qué patrón apliqué, cuál descarté y qué costo acepté.
-
-**EN** · Refactoring of a working but poorly designed Laravel delivery marketplace. I identified design problems, applied the right pattern while keeping the test suite green, and documented every decision in a log: the problem, the pattern I applied, the one I ruled out, and the trade-off I accepted.
+Refactoring of a working but poorly designed Laravel delivery marketplace. I identified design problems, applied the right pattern while keeping the test suite green, and documented every decision in a log: the problem I saw, the pattern I applied, the one I ruled out, and the trade-off I accepted.
 
 | | |
 |---|---|
-| **Autora / Author** | Kathleen Argueta |
-| **Curso / Course** | DA0921 Patrones de Diseño de Software, ESEN (2026) |
+| **Author** | Kathleen Argueta |
+| **Course** | DA0921 Software Design Patterns, ESEN (2026) |
 | **Stack** | PHP 8.4 · Laravel · PHPUnit · Docker |
-| **Portafolio** | [kathleenargueta.github.io](https://kathleenargueta.github.io) |
+| **Portfolio** | [kathleenargueta.github.io](https://kathleenargueta.github.io) |
 
-## Lo que hice / What I did
+## What I did
 
-| Entrega | Problema en el legacy | Decisión |
+| Assignment | Problem in the legacy code | Decision |
 |---|---|---|
-| Tarea corta 1 | Code smells en el dominio | Inventario de smells en formato de tabla |
-| Mini-entrega 1 (SOLID) | Violaciones de SOLID en `Customer`, `Notification`, `OrderItem` y `CourierController` | SRP, OCP, ISP y DIP: `NotifiableInterface`, `CourierPolicy` para autorización e inyección en `AppServiceProvider` |
-| Mini-entrega 2 (Strategy) | `Discount::apply` con un `switch` que crece con cada promoción | Una clase por tipo de descuento (`app/Discounts/`) detrás de `DiscountInterface` |
-| Mini-entrega 2 (Template Method) | `Customer::placeOrder` partido por un `if` entre efectivo y Wompi | `OrderProcessor` abstracto con `CashOrderProcessor` y `WompiOrderProcessor` (`app/Processors/`) |
+| Short assignment 1 | Code smells across the domain | Inventory of smells in a table |
+| Milestone 1 (SOLID) | SOLID violations in `Customer`, `Notification`, `OrderItem` and `CourierController` | SRP, OCP, ISP and DIP: `NotifiableInterface`, `CourierPolicy` for authorization, and injection in `AppServiceProvider` |
+| Milestone 2 (Strategy) | `Discount::apply` with a `switch` that grows with every new promotion | One class per discount type (`app/Discounts/`) behind `DiscountInterface` |
+| Milestone 2 (Template Method) | `Customer::placeOrder` split by an `if` between cash and Wompi payments | Abstract `OrderProcessor` with `CashOrderProcessor` and `WompiOrderProcessor` (`app/Processors/`) |
 
-Bitácoras: [Mini-entrega 2](bitacoras/me2-bitacora.md) · [Mini-entrega 1](https://github.com/KathleenArgueta/legacy-delivery-refactor/tree/81d356152f1d1aaa0920138294faa9b63dc96352/bitacoras)
+Decision logs (in Spanish): [Milestone 2](bitacoras/me2-bitacora.md) · [Milestone 1](https://github.com/KathleenArgueta/legacy-delivery-refactor/tree/81d356152f1d1aaa0920138294faa9b63dc96352/bitacoras)
 
-> Compartido con autorización del catedrático. / Shared with the instructor's permission.
+> Shared with the instructor's permission.
 
 ---
 
-## Sobre el proyecto base
+## About the base project (original course README, in Spanish)
 
 Marketplace de delivery multi-vendor construido en PHP 8.3 / Laravel 13.
 Usado como caso de estudio en **DA0921 Patrones de Diseño de Software — ESEN, ciclo 2026-2**.
