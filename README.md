@@ -1,4 +1,32 @@
-# Legacy Delivery System
+# Legacy Delivery: refactor con patrones de diseño
+
+**ES** · Refactor de un marketplace de delivery en Laravel que funciona pero está mal diseñado. Mi trabajo fue detectar los problemas de diseño, aplicar el patrón adecuado sin romper los tests y documentar cada decisión en una bitácora: qué problema vi, qué patrón apliqué, cuál descarté y qué costo acepté.
+
+**EN** · Refactoring of a working but poorly designed Laravel delivery marketplace. I identified design problems, applied the right pattern while keeping the test suite green, and documented every decision in a log: the problem, the pattern I applied, the one I ruled out, and the trade-off I accepted.
+
+| | |
+|---|---|
+| **Autora / Author** | Kathleen Argueta |
+| **Curso / Course** | DA0921 Patrones de Diseño de Software, ESEN (2026) |
+| **Stack** | PHP 8.4 · Laravel · PHPUnit · Docker |
+| **Portafolio** | [kathleenargueta.github.io](https://kathleenargueta.github.io) |
+
+## Lo que hice / What I did
+
+| Entrega | Problema en el legacy | Decisión |
+|---|---|---|
+| Tarea corta 1 | Code smells en el dominio | Inventario de smells en formato de tabla |
+| Mini-entrega 1 (SOLID) | Violaciones de SOLID en `Customer`, `Notification`, `OrderItem` y `CourierController` | SRP, OCP, ISP y DIP: `NotifiableInterface`, `CourierPolicy` para autorización e inyección en `AppServiceProvider` |
+| Mini-entrega 2 (Strategy) | `Discount::apply` con un `switch` que crece con cada promoción | Una clase por tipo de descuento (`app/Discounts/`) detrás de `DiscountInterface` |
+| Mini-entrega 2 (Template Method) | `Customer::placeOrder` partido por un `if` entre efectivo y Wompi | `OrderProcessor` abstracto con `CashOrderProcessor` y `WompiOrderProcessor` (`app/Processors/`) |
+
+Bitácoras: [Mini-entrega 2](bitacoras/me2-bitacora.md) · [Mini-entrega 1](https://github.com/KathleenArgueta/legacy-delivery-refactor/tree/81d356152f1d1aaa0920138294faa9b63dc96352/bitacoras)
+
+> Compartido con autorización del catedrático. / Shared with the instructor's permission.
+
+---
+
+## Sobre el proyecto base
 
 Marketplace de delivery multi-vendor construido en PHP 8.3 / Laravel 13.
 Usado como caso de estudio en **DA0921 Patrones de Diseño de Software — ESEN, ciclo 2026-2**.
